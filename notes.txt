@@ -1,0 +1,4 @@
+https://chatgpt.com/c/6a6adf08-7888-83e8-80eb-395048024e4c
+
+to run python backend
+uvicorn app.main:app --reload

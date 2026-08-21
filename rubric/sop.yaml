@@ -1,0 +1,22 @@
+dimensions:
+
+  clarity:
+    weight: 15
+
+  motivation:
+    weight: 15
+
+  specificity:
+    weight: 20
+
+  academic_readiness:
+    weight: 15
+
+  career_goals:
+    weight: 15
+
+  writing_quality:
+    weight: 10
+
+  programme_fit:
+    weight: 10
