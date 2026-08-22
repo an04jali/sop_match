@@ -22,7 +22,7 @@ Base = declarative_base()
 
 
 def init_db():
-    from app import model_db  # noqa: F401
+    from app import models_db  # noqa: F401
     Base.metadata.create_all(bind=engine)
 
 

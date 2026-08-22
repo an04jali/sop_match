@@ -6,7 +6,7 @@ from sqlalchemy.orm import Session
 
 from app.services.improvement import ImprovementService
 from app.db import get_db
-from app.model_db import Analysis
+from app.models_db import Analysis
 
 router = APIRouter()
 

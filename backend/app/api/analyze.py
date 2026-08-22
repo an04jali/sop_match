@@ -7,8 +7,11 @@ from app.services.ingest import ingest_document
 from app.services.structural import StructuralAnalyzer
 from app.services.dimensions import DimensionScorer
 from app.services.weakest import WeakestParagraphFinder
+
 from app.db import get_db
-from app.model_db import Analysis
+from app.models_db import Analysis, User
+from app.dependencies import get_current_user
+
 
 router = APIRouter()
 
@@ -18,7 +21,8 @@ async def analyze_sop(
     file: UploadFile = File(...),
     university: str | None = Form(default=None),
     program: str | None = Form(default=None),
-    db: Session = Depends(get_db)
+    db: Session = Depends(get_db),
+    current_user: User = Depends(get_current_user)
 ):
 
     # 1. Extract text
@@ -70,6 +74,7 @@ async def analyze_sop(
 
     # 7. Find weakest paragraph
     paragraph_finder = WeakestParagraphFinder(text)
+
     weakest_paragraph = paragraph_finder.find(
         evidence
     )
@@ -84,8 +89,10 @@ async def analyze_sop(
         "weakest_paragraph": weakest_paragraph
     }
 
-    # 8. Save to history (SQLite)
+    # 8. Save analysis to history
+    #    Linked to the currently logged-in user
     record = Analysis(
+        user_id=current_user.id,
         filename=file.filename,
         university=university,
         program=program,
@@ -94,10 +101,12 @@ async def analyze_sop(
         word_count=structural_result.get("words"),
         analysis_json=json.dumps(response_data)
     )
+
     db.add(record)
     db.commit()
     db.refresh(record)
 
+    # 9. Return database ID
     response_data["id"] = record.id
 
     return response_data
