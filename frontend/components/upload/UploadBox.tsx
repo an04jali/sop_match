@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import { analyzeSOP } from "../../services/api";
+import { analyzeSOP } from "@/services/api";
 
 export default function UploadBox() {
     const router = useRouter();
