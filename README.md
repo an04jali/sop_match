@@ -136,8 +136,8 @@ Users can access their previous SOP analyses through the analysis history functi
                     │ Improvements         │
                     │ Full Rewrite         │
                     └──────────────────────┘
-🛠️ Technology Stack
-Frontend
+###🛠️ Technology Stack
+##Frontend
 Next.js 16
 React 19
 TypeScript
@@ -146,16 +146,19 @@ Tailwind CSS
 Three.js
 jsPDF
 React Context API
-Backend
+
+##Backend
 Python
 FastAPI
 Uvicorn
 REST APIs
-Generative AI
+
+##Generative AI
 Google Gemini API
 Google GenAI SDK
 Prompt Engineering
 LLM Integration
+
 Structured JSON responses
 AI response parsing and validation
 Retry handling for temporary API failures
@@ -170,19 +173,22 @@ Protected routes
 Session management
 CORS configuration
 Environment variable based secret management
-DevOps & Deployment
+
+## DevOps & Deployment
 Docker
 Render
 Git
 GitHub
 Environment variables
 Production builds
+
 Git-based deployment
 Development Tools
 Visual Studio Code
 npm
 ESLint
 Python virtual environments
+
 📁 Project Structure
 abr-p2-draftsman/
 │
