@@ -1,26 +1,88 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
+
 @import "tailwindcss";
 
+/* Required for Tailwind v4: makes `dark:` utilities respond to the .dark
+   class (toggled by ThemeContext) instead of only the OS color-scheme. */
+@custom-variant dark (&:where(.dark, .dark *));
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-bg: 251 251 248;
+  --color-surface: 255 255 255;
+  --color-border: 220 230 238;
+  --color-accent: 46 111 158;
+  --color-heading: 19 42 58;
+  --color-body: 92 112 128;
+  --color-muted: 140 160 175;
+  --color-warning: 194 121 46;
+  --color-success: 62 122 87;
+  --color-hover: 238 242 246;
+}
+
+.dark {
+  --color-bg: 15 23 32;
+  --color-surface: 24 36 48;
+  --color-border: 42 59 74;
+  --color-accent: 91 155 213;
+  --color-heading: 234 242 248;
+  --color-body: 183 196 206;
+  --color-muted: 124 139 153;
+  --color-warning: 224 153 90;
+  --color-success: 111 190 147;
+  --color-hover: 31 46 58;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: rgb(var(--color-bg));
+  --color-surface: rgb(var(--color-surface));
+  --color-border: rgb(var(--color-border));
+  --color-accent: rgb(var(--color-accent));
+  --color-heading: rgb(var(--color-heading));
+  --color-body: rgb(var(--color-body));
+  --color-muted: rgb(var(--color-muted));
+  --color-warning: rgb(var(--color-warning));
+  --color-success: rgb(var(--color-success));
+  --color-hover: rgb(var(--color-hover));
+
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "IBM Plex Mono", monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background-color: rgb(var(--color-bg));
+  color: rgb(var(--color-body));
+  font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: rgb(var(--color-accent) / 0.2);
+  color: rgb(var(--color-heading));
 }
