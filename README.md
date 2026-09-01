@@ -1,67 +1,111 @@
-# Draftsman
-live link: https://draftsman.onrender.com
+Draftsman
 
-A full-stack web application designed to provide a reliable and user-friendly workflow through a modern web interface.
+AI-powered Statement of Purpose (SOP) analysis and improvement platform.
 
-## 🌐 Live Demo
+Live Deployment
 
-**[Open Draftsman](https://draftsman.onrender.com)**
+Application: https://sop-draftman.onrender.com
 
-## 📌 Overview
+GitHub: github.com/an04jali/sop_match
 
-Draftsman is a full-stack web application with a separate frontend and backend, containerized using Docker and deployed on Render.
+Features
+User registration and login
+PDF and DOCX SOP upload
+AI-powered SOP analysis
+Scoring across 7 dimensions:
+Clarity
+Specificity
+Motivation
+Programme Fit
+Academic Readiness
+Career Vision
+Writing Quality
+Structural analysis including:
+Word count
+Paragraph count
+Sentence count
+Reading time
+Average sentence length
+Opening and closing strength
+Paragraph balance
+Weakest paragraph identification
+AI-powered paragraph improvement
+Before/after paragraph comparison
+Full SOP rewriting
+Analysis history
+Downloadable analysis report
+Dark/light theme support
+Responsive UI
+Interactive 3D globe visualization
+Tech Stack
 
-The project focuses on building a clean, responsive user experience while maintaining a structured backend architecture for reliable application workflows.
+Languages: Python, TypeScript, JavaScript, HTML, CSS
 
-## ✨ Features
+Frontend: Next.js 16, React 19, Tailwind CSS, Three.js
 
-- Responsive and user-friendly web interface
-- Full-stack frontend and backend architecture
-- REST API integration
-- Structured frontend and backend separation
-- Dockerized application deployment
-- Production deployment on Render
-- Reliable API request and response handling
+Backend: FastAPI, Python, Uvicorn, REST APIs
 
-## 🛠️ Tech Stack
+AI: Google Gemini API, Generative AI, Prompt Engineering, LLM Integration
 
-### Frontend
-- React.js
-- JavaScript / TypeScript
-- HTML5
-- CSS3
-- Responsive Web Design
+Document Processing: PDF, DOCX, Text Extraction
 
-### Backend
-- Python
-- REST APIs
+Authentication: User Authentication, Protected Routes, Session Management
 
-### DevOps & Deployment
-- Docker
-- Docker Compose
-- Render
-- Git
-- GitHub
+Tools: Git, GitHub, VS Code, npm, ESLint
 
-## 🏗️ Architecture
+Deployment: Docker,Render, Environment Variables, Production Builds, Git-based Deployment
 
-The application follows a full-stack architecture:
+Project Structure
+abr-p2-draftsman/
+├── backend/
+│   └── app/
+│       ├── api/
+│       ├── prompts/
+│       └── services/
+│
+├── frontend/
+│   ├── src/
+│   │   ├── app/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── hooks/
+│   │   └── services/
+│   ├── package.json
+│   └── package-lock.json
+│
+└── README.md
+Local Setup
+Frontend
+cd frontend
+npm install
+npm run dev
 
-```text
-                    ┌──────────────────┐
-                    │     Frontend     │
-                    │   React.js UI    │
-                    └────────┬─────────┘
-                             │
-                             │ REST API
-                             ▼
-                    ┌──────────────────┐
-                    │     Backend      │
-                    │   API Server     │
-                    └────────┬─────────┘
-                             │
-                             ▼
-                    ┌──────────────────┐
-                    │     Services     │
-                    │  / Data Layer    │
-                    └──────────────────┘
+Frontend runs on:
+
+http://localhost:3000
+Backend
+cd backend
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+uvicorn app.main:app --reload
+
+Backend runs on:
+
+http://localhost:8000
+Environment Variables
+
+Create a .env file in the backend:
+
+GEMINI_API_KEY=your_gemini_api_key
+
+Do not commit API keys or .env files to GitHub.
+
+Production Build
+
+Before deploying frontend changes:
+
+cd frontend
+npm run build
+
+The project is deployed through Render and connected to the GitHub repository for production deployment.
